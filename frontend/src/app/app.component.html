@@ -1,0 +1,11 @@
+<mat-toolbar>
+  <button mat-button
+          [matMenuTriggerFor]="soccerplayerMenu">Soccerplayer</button>
+  <mat-menu #soccerplayerMenu="matMenu">
+    <button mat-menu-item routerLink="soccerplayer-list">List
+      soccerplayers</button>
+    <button mat-menu-item routerLink="soccerplayer-form">Create
+      soccerplayers</button>
+  </mat-menu>
+</mat-toolbar>
+<router-outlet></router-outlet>

@@ -1,0 +1,58 @@
+<form [formGroup]="soccerplayerFormGroup" class="soccerplayer-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Firstname" formControlName="first_name" required>
+    <mat-hint align="end">The firstname of the soccerplayer</mat-hint>
+    <mat-error *ngIf="soccerplayerFormGroup.controls.first_name.hasError('required')">Firstname is required</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="text" placeholder="Lastname" formControlName="last_name">
+    <mat-hint align="end">The lastname of the soccerplayer</mat-hint>
+    <mat-error *ngIf="soccerplayerFormGroup.controls.last_name.hasError('badWord')">
+    Lastname contains bad word</mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Goals" formControlName="goals">
+    <mat-hint align="end">Goals of the player</mat-hint>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="injured">Injured</mat-checkbox>
+
+  <mat-form-field>
+    <mat-select placeholder="Position" formControlName="position">
+      <mat-option [value]="position.key" *ngFor="let position of
+        positionService.positionName | keyvalue">{{position.value}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The position of the soccerplayers</mat-hint>
+  </mat-form-field>
+  <app-date placeholder="Birth" formControlName="birth" hint="The birth of the player"
+            [required]="true"></app-date>
+
+  <mat-form-field>
+    <mat-select placeholder="Country"
+                formControlName="country">
+      <mat-option [value]="countryOption.id" *ngFor="let
+      countryOption of countryOptions">{{countryOption.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The country of the player</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Club"
+                formControlName="clubs" multiple >
+      <mat-option [value]="clubOptions.id" *ngFor="let
+      clubOptions of clubOptions">{{clubOptions.name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The country of the player</mat-hint>
+  </mat-form-field>
+
+
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!soccerplayerFormGroup.valid" (click)="createSoccerplayer()">
+      <span *ngIf="!soccerplayerFormGroup.controls.id.value">Create</span>
+      <span *ngIf="soccerplayerFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>
