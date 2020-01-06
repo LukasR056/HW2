@@ -4,8 +4,10 @@
     <mat-hint align="end">The Name of the Club</mat-hint>
     <mat-error *ngIf="clubFormGroup.controls.name.hasError('required')">Name is required</mat-error>
   </mat-form-field>
+  <br/>
 
   <mat-checkbox formControlName="active">active</mat-checkbox>
+  <br/>
 
   <mat-form-field>
     <input matInput type="number" placeholder="Goal difference" formControlName="goal_difference">
