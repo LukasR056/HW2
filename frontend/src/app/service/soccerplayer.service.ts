@@ -9,6 +9,10 @@ export class SoccerplayerService {
   constructor(private http: HttpClient) {
   }
 
+  retrieveSoccerplayerOptions() {
+    return this.http.get<any[]>('api/soccerplayer/list');
+  }
+
   getSoccerplayers() {
     return this.http.get('/api/soccerplayer/list');
   }

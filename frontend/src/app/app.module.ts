@@ -19,6 +19,7 @@ import {
 } from '@angular/material';
 import {DateComponent} from './date/date.component';
 import { ClubListComponent } from './club-list/club-list.component';
+import { ClubFormComponent } from './club-form/club-form.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ClubListComponent } from './club-list/club-list.component';
     SoccerplayerListComponent,
     SoccerplayerFormComponent,
     DateComponent,
-    ClubListComponent
+    ClubListComponent,
+    ClubFormComponent
   ],
   imports: [
     BrowserModule,

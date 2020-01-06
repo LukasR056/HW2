@@ -52,9 +52,12 @@ def club_form_update(request,pk):
     return Response(serializer.errors, status=400)
 
 @api_view(['GET'])
-def club_form_get(request):
-    club = Club.objects.all()
-    serializer = ClubFormSerializer(club, many=True)
+def club_form_get(request,pk):
+    try:
+        club = Club.objects.get(pk=pk)
+    except Club.DoesNotExist:
+        return Response({'error': 'Club does not exist.'}, status=404)
+    serializer = ClubFormSerializer(club)
     return Response(serializer.data)
 
 @api_view(['GET','DELETE'])

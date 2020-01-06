@@ -1,0 +1,29 @@
+<form [formGroup]="clubFormGroup" class="club-form">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Name" formControlName="name" required>
+    <mat-hint align="end">The Name of the Club</mat-hint>
+    <mat-error *ngIf="clubFormGroup.controls.name.hasError('required')">Name is required</mat-error>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="active">active</mat-checkbox>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Goal difference" formControlName="goal_difference">
+    <mat-hint align="end">Goal difference of the club</mat-hint>
+  </mat-form-field>
+  <app-date placeholder="Founded" formControlName="founded" hint="When was teh club founded"
+            [required]="true"></app-date>
+
+  <mat-form-field>
+    <input matInput type="number" placeholder="Points" formControlName="points">
+    <mat-hint align="end">Points of the CLub</mat-hint>
+  </mat-form-field>
+
+  <br/>
+  <mat-card-actions align="center">
+    <button mat-raised-button color="primary" [disabled]="!clubFormGroup.valid" (click)="createClub()">
+      <span *ngIf="!clubFormGroup.controls.id.value">Create</span>
+      <span *ngIf="clubFormGroup.controls.id.value">Update</span>
+    </button>
+  </mat-card-actions>
+</form>

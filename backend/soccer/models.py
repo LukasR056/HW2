@@ -27,7 +27,7 @@ class Soccerplayer(models.Model):
     position = models.CharField(max_length=3, choices=POSITION, null=True)
     birth = models.DateField()
     country = models.ForeignKey(Country, on_delete=models.CASCADE, null=True)
-    clubs = models.ManyToManyField('Club', related_name='soccerplayer', blank=True)
+    clubs = models.ManyToManyField('Club', related_name='clubs', blank=True)
 
     def __str__(self):
         return self.last_name

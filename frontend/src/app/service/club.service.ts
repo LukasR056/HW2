@@ -18,6 +18,19 @@ export class ClubService {
   }
 
   deleteClub(club: any) {
-    return this.http.delete('club/' + club.id + '/delete');
+    return this.http.delete('api/club/' + club.id + '/delete');
+  }
+
+  createClub(value: any) {
+    return this.http.post('/api/club/create', value);
+  }
+
+  updateClub(club: any) {
+    return this.http.put('/api/club/' + club.id + '/update', club);
+  }
+
+
+  getClub(id: string) {
+    return this.http.get('/api/club/' + id + '/get');
   }
 }

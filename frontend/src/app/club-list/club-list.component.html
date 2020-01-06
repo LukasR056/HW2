@@ -31,9 +31,9 @@
 
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef>Actions</th>
-    <td mat-cell *matCellDef="let clubs">
-      <button mat-button [routerLink]="'/club-form/' + clubs.id">Edit</button>
-      <button mat-button (click)="deleteClub(clubs)">Delete</button>
+    <td mat-cell *matCellDef="let club">
+      <button mat-button [routerLink]="'/club-form/' + club.id">Edit</button>
+      <button mat-button (click)="deleteClub(club)">Delete</button>
     </td>
   </ng-container>
 

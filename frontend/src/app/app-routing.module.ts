@@ -3,6 +3,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {SoccerplayerListComponent} from './soccerplayer-list/soccerplayer-list.component';
 import {SoccerplayerFormComponent} from './soccerplayer-form/soccerplayer-form.component';
 import {ClubListComponent} from './club-list/club-list.component';
+import {ClubFormComponent} from './club-form/club-form.component';
 
 
 const routes: Routes = [
@@ -11,6 +12,8 @@ const routes: Routes = [
   {path: 'soccerplayer-form', component: SoccerplayerFormComponent},
   {path: 'soccerplayer-form/:id', component: SoccerplayerFormComponent},
   {path: 'club-list', component: ClubListComponent},
+  {path: 'club-form', component: ClubFormComponent},
+  {path: 'club-form/:id', component: ClubFormComponent},
 ];
 
 @NgModule({

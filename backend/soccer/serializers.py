@@ -48,9 +48,13 @@ class ClubListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Club
-        fields = ['id', 'name', 'active', 'goal_difference', 'points', 'founded']
+        fields = '__all__'
 
+class CLubFormSerializer(serializers.ModelSerializer):
 
+    class Meta:
+        model = Club
+        fields = ['id', 'name', 'active', 'goal_difference', 'points', 'founded','clubs']
 
 
 ## Zum Listen aller Soccerplayers, deshalb hier auch nicht den Schlüssel genommen sondern die Namen. Was man halt wie wo braucht. Nested Serilazer
