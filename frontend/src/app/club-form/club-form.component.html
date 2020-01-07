@@ -21,6 +21,15 @@
     <mat-hint align="end">Points of the CLub</mat-hint>
   </mat-form-field>
 
+  <mat-form-field>
+    <mat-select placeholder="Soccerplayer"
+                formControlName="clubs" multiple >
+      <mat-option [value]="soccerPlayerOptions.id" *ngFor="let
+      soccerPlayerOptions of soccerPlayerOptions">{{soccerPlayerOptions.first_name+" " + soccerPlayerOptions.last_name}}</mat-option>
+    </mat-select>
+    <mat-hint align="end">The club of the player</mat-hint>
+  </mat-form-field>
+
   <br/>
   <mat-card-actions align="center">
     <button mat-raised-button color="primary" [disabled]="!clubFormGroup.valid" (click)="createClub()">

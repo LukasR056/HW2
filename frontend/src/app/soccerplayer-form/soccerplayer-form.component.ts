@@ -18,6 +18,8 @@ export class SoccerplayerFormComponent implements OnInit {
   countryOptions;
   clubOptions;
 
+
+
   constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute,
               private router: Router, private soccerplayerService: SoccerplayerService,
               public positionService: PositionService, private countryService: CountryService,
@@ -44,6 +46,7 @@ export class SoccerplayerFormComponent implements OnInit {
       birth: [null],
       country: [null],
       clubs: [[]],
+      rating: [null],
     });
 
     const id = this.route.snapshot.paramMap.get('id');

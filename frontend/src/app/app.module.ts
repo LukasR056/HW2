@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpClientJsonpModule, HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {SoccerplayerListComponent} from './soccerplayer-list/soccerplayer-list.component';
 import {SoccerplayerFormComponent} from './soccerplayer-form/soccerplayer-form.component';
@@ -20,6 +20,10 @@ import {
 import {DateComponent} from './date/date.component';
 import { ClubListComponent } from './club-list/club-list.component';
 import { ClubFormComponent } from './club-form/club-form.component';
+import {ShareButtonsModule} from '@ngx-share/buttons';
+import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {faCoffee, fas} from '@fortawesome/free-solid-svg-icons';
+
 
 @NgModule({
   declarations: [
@@ -28,7 +32,7 @@ import { ClubFormComponent } from './club-form/club-form.component';
     SoccerplayerFormComponent,
     DateComponent,
     ClubListComponent,
-    ClubFormComponent
+    ClubFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,9 +51,13 @@ import { ClubFormComponent } from './club-form/club-form.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    ShareButtonsModule,
+    HttpClientJsonpModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

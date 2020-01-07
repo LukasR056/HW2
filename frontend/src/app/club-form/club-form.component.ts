@@ -20,7 +20,7 @@ export class ClubFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private http: HttpClient, private route: ActivatedRoute,
               private router: Router, private soccerplayerService: SoccerplayerService,
-              public positionService: PositionService, private countryService: CountryService,
+              private countryService: CountryService,
               private clubService: ClubService) { }
 
   ngOnInit() {
@@ -40,6 +40,7 @@ export class ClubFormComponent implements OnInit {
       goal_difference: [null],
       points: [null],
       founded: [null],
+      clubs: [[]],
     });
 
 

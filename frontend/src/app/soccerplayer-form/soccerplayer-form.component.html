@@ -9,7 +9,8 @@
     <input matInput type="text" placeholder="Lastname" formControlName="last_name">
     <mat-hint align="end">The lastname of the soccerplayer</mat-hint>
     <mat-error *ngIf="soccerplayerFormGroup.controls.last_name.hasError('badWord')">
-    Lastname contains bad word</mat-error>
+      Lastname contains bad word
+    </mat-error>
   </mat-form-field>
 
   <mat-form-field>
@@ -40,12 +41,14 @@
 
   <mat-form-field>
     <mat-select placeholder="Club"
-                formControlName="clubs" multiple >
+                formControlName="clubs" multiple>
       <mat-option [value]="clubOptions.id" *ngFor="let
       clubOptions of clubOptions">{{clubOptions.name}}</mat-option>
     </mat-select>
-    <mat-hint align="end">The country of the player</mat-hint>
+    <mat-hint align="end">The club of the player</mat-hint>
   </mat-form-field>
+
+
 
 
   <br/>

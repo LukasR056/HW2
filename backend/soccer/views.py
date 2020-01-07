@@ -6,7 +6,7 @@ from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from soccer.models import Country, Soccerplayer, Club
-from soccer.serializers import CountryOptionSerializer, ClubFormSerializer, SoccerplayerFormSerializer, \
+from soccer.serializers import CountryOptionSerializer, CLubFormSerializer, SoccerplayerFormSerializer, \
     SoccerplayerListSerializer, ClubListSerializer
 
 
@@ -31,7 +31,7 @@ def club_option_list(request):
 
 @api_view(['POST'])
 def club_form_create(request):
-    serializer = ClubFormSerializer(data=request.data)
+    serializer = CLubFormSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=201)
@@ -45,7 +45,7 @@ def club_form_update(request,pk):
         return Response({'error': 'Club does not exist.'}, status=404)
 
     data = JSONParser().parse(request)
-    serializer = ClubFormSerializer(club, data=data)
+    serializer = CLubFormSerializer(club, data=data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data)
@@ -57,7 +57,7 @@ def club_form_get(request,pk):
         club = Club.objects.get(pk=pk)
     except Club.DoesNotExist:
         return Response({'error': 'Club does not exist.'}, status=404)
-    serializer = ClubFormSerializer(club)
+    serializer = CLubFormSerializer(club)
     return Response(serializer.data)
 
 @api_view(['GET','DELETE'])
@@ -68,7 +68,7 @@ def club_delete(request,pk):
         return Response({'error': 'club does not exist.'}, status=404)
 
     if request.method == 'GET':
-        serializer = ClubFormSerializer(club)
+        serializer = CLubFormSerializer(club)
         return Response(serializer.data)
 
     elif request.method == 'DELETE':

@@ -11,14 +11,6 @@ class CountryOptionSerializer(serializers.ModelSerializer):
         return obj.country.name if obj.country else ''
 
 
-class ClubFormSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Club
-        fields = '__all__'
-
-    def get_club_name(self, obj):
-        return obj.club.name if obj.club else ''
-
 
 class SoccerplayerFormSerializer(serializers.ModelSerializer):
     class Meta:
@@ -31,7 +23,7 @@ class SoccerplayerFormSerializer(serializers.ModelSerializer):
 
 class SoccerplayerListSerializer(serializers.ModelSerializer):
     country_name = serializers.SerializerMethodField()
-
+    clubs = serializers.SerializerMethodField()
 
     class Meta:
         model = Soccerplayer
@@ -41,31 +33,28 @@ class SoccerplayerListSerializer(serializers.ModelSerializer):
     def get_country_name(self, obj):
         return obj.country.name if obj.country else ''
 
-    def get_clubs_name(self, obj):
-        return obj.clubs.name if obj.clubs else ''
+    ##ManyToMan Relations
+    def get_clubs(self, obj):
+        if obj:
+            return {' ' + x.name for x in obj.clubs.all()}
 
 class ClubListSerializer(serializers.ModelSerializer):
+    clubs = serializers.SerializerMethodField()
 
     class Meta:
         model = Club
-        fields = '__all__'
+        fields = ['id', 'name', 'active', 'goal_difference', 'points', 'founded', 'clubs']
+
+        ##ManyToMan Relations bezeichnung hier etwas schwammig, funktioniert aber
+    def get_clubs(self, obj):
+        if obj:
+            return { x.first_name + ' ' + x.last_name for x in obj.clubs.all()}
 
 class CLubFormSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = Club
-        fields = ['id', 'name', 'active', 'goal_difference', 'points', 'founded','clubs']
+        fields = ['id', 'name', 'active', 'goal_difference', 'points', 'founded', 'clubs']
 
 
-## Zum Listen aller Soccerplayers, deshalb hier auch nicht den Schlüssel genommen sondern die Namen. Was man halt wie wo braucht. Nested Serilazer
-# class SoccerplayersListSerializer(serializers.ModelSerializer):
-#    country_name = serializers.SerializerMethodField()
-#    clubs = ClubFormSerializer(many=True)
-#
-#    class Meta:
-# #        model = Soccerplayer
-# #        fields = ['id', 'first_name','last_name','goals','injured','position','birth','country_name','clubs']
-#
-#
-#
-#
+
+

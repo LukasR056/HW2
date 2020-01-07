@@ -44,8 +44,22 @@
     <td mat-cell *matCellDef="let soccerplayer">
       <button mat-button [routerLink]="'/soccerplayer-form/' + soccerplayer.id">Edit</button>
       <button mat-button (click)="deleteSoccerplayer(soccerplayer)">Delete</button>
+      <share-buttons [theme]="'material-dark'"
+                     [include]="['whatsapp']"
+                     [show]="5"
+                     [showText]="true"
+                     [showCount]="true"
+                     [size]="-2"
+                     [url]="'http://localhost:4200/soccerplayer-form/' + soccerplayer.id"
+                     [description]="'Ever heard of this player?'"
+                     [autoSetMeta]="false"
+      ></share-buttons>
     </td>
   </ng-container>
+
+
+
+
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
