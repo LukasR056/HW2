@@ -40,7 +40,7 @@ export class SoccerplayerFormComponent implements OnInit {
       id: [null],
       first_name: [''],
       last_name: ['', [Validators.required, this.badWordValidator()]],
-      goals: [null],
+      goals: [null,[Validators.min(0)]],
       injured: [null],
       position: [null],
       birth: [null],
@@ -72,10 +72,10 @@ export class SoccerplayerFormComponent implements OnInit {
     }
   }
 
-  // erklärung zum Badword https://www.youtube.com/watch?v=U2f00MDnaoI
+
   badWordValidator() {
     return (control: AbstractControl): { [key: string]: any } | null => {
-      const forbidden = /Hurenkind/.test(control.value);
+      const forbidden = /(Badguy|Who)/.test(control.value);
       return forbidden ? {badWord: {value: control.value}} : null;
     };
   }

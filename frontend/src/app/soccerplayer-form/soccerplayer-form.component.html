@@ -16,6 +16,7 @@
   <mat-form-field>
     <input matInput type="number" placeholder="Goals" formControlName="goals">
     <mat-hint align="end">Goals of the player</mat-hint>
+    <mat-error *ngIf="soccerplayerFormGroup.controls.goals.hasError('min')">Positive number of goals</mat-error>
   </mat-form-field>
 
   <mat-checkbox formControlName="injured">Injured</mat-checkbox>

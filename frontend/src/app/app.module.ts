@@ -18,12 +18,18 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import {DateComponent} from './date/date.component';
-import { ClubListComponent } from './club-list/club-list.component';
-import { ClubFormComponent } from './club-form/club-form.component';
+import {ClubListComponent} from './club-list/club-list.component';
+import {ClubFormComponent} from './club-form/club-form.component';
 import {ShareButtonsModule} from '@ngx-share/buttons';
-import { FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {faCoffee, fas} from '@fortawesome/free-solid-svg-icons';
+import {JwtModule} from '@auth0/angular-jwt';
+import { LoginComponent } from './login/login.component';
+import { LogoutComponent } from './logout/logout.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('access_token');
+}
 
 @NgModule({
   declarations: [
@@ -33,6 +39,8 @@ import {faCoffee, fas} from '@fortawesome/free-solid-svg-icons';
     DateComponent,
     ClubListComponent,
     ClubFormComponent,
+    LoginComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +62,12 @@ import {faCoffee, fas} from '@fortawesome/free-solid-svg-icons';
     ShareButtonsModule,
     HttpClientJsonpModule,
     FontAwesomeModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter,
+        whitelistedDomains: ['localhost:4200']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

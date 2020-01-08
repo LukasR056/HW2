@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from rest_framework_jwt.views import obtain_jwt_token
+from django.conf.urls import url
 
 from soccer import views
 
@@ -31,4 +33,6 @@ urlpatterns = [
     path('club/<int:pk>/get', views.club_form_get),
     path('club/<int:pk>/update', views.club_form_update),
     path('club/<int:pk>/delete', views.club_delete),
+
+    url(r'^api-token-auth/', obtain_jwt_token),
 ]
